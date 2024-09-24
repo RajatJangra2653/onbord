@@ -3,6 +3,7 @@ Start-Service -Name "com.docker.service"
 sleep 60
 Get-Service -Name "com.docker.service"
 docker --version
+Unregister-ScheduledTask -TaskName "Setup1" -Confirm:$false
 Start-Process -FilePath "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 sleep 60
 docker ps
