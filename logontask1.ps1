@@ -13,3 +13,4 @@ sleep 60
 $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
 Set-ItemProperty -Path $regPath -Name "Docker Desktop" -Value "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 Stop-Transcript
+Restart-Computer -Force 
