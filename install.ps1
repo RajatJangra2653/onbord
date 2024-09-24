@@ -2,7 +2,7 @@ Start-Transcript -Path C:\WindowsAzure\Logs\CustomScriptExtension.txt -Append
 
 $webClient = New-Object System.Net.WebClient
 $url = "https://desktop.docker.com/win/main/amd64/165256/Docker%20Desktop%20Installer.exe"
-$outputFile ="C:\WindowsAzure\DockerDesktopInstaller1.exe"
+$outputFile ="C:\WindowsAzure\DockerDesktopInstaller.exe"
 $webClient.DownloadFile($url, $outputFile)
 
 Start-Process $outputFile -Wait -ArgumentList 'install', '--accept-license', '--always-run-service', '--quiet', '--admin-settings'
