@@ -1,0 +1,25 @@
+Start-Transcript -Path C:\WindowsAzure\Logs\CustomScriptExtension.txt -Append
+
+$webClient = New-Object System.Net.WebClient
+$url = "https://desktop.docker.com/win/main/amd64/165256/Docker%20Desktop%20Installer.exe"
+$outputFile ="C:\WindowsAzure\DockerDesktopInstaller1.exe"
+$webClient.DownloadFile($url, $outputFile)
+
+Start-Process $outputFile -Wait -ArgumentList 'install', '--accept-license', '--always-run-service', '--quiet', '--admin-settings'
+
+$WebClient = New-Object System.Net.WebClient
+$WebClient.DownloadFile("https://mfastorageaccount8878.blob.core.windows.net/buildintellingentapps/logontask.ps1","C:\LabFiles\logontask-ia.ps1")
+
+
+$Trigger= New-ScheduledTaskTrigger -AtLogOn
+$User= "$($env:ComputerName)\demouser"
+$Action= New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\Powershell.exe" -Argument "-executionPolicy Unrestricted -File C:\LabFiles\logontask-ia.ps1"
+Register-ScheduledTask -TaskName "Setup" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest -Force
+Set-ExecutionPolicy -ExecutionPolicy bypass -Force
+
+
+
+Stop-Transcript
+Restart-Computer -Force 
+
+
