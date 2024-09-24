@@ -1,4 +1,4 @@
-Start-Transcript -Path C:\WindowsAzure\Logs\CloudLabsCustomScriptExtension1.txt -Append
+Start-Transcript -Path C:\WindowsAzure\Logs\CustomScriptExtension1.txt -Append
 Write-Host "Custom Script Extention Started"
 $webClient = New-Object System.Net.WebClient
 $url = "https://desktop.docker.com/win/main/amd64/165256/Docker%20Desktop%20Installer.exe"
