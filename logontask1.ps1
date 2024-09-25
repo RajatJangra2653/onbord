@@ -13,6 +13,8 @@ sleep 60
 $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run"
 Set-ItemProperty -Path $regPath -Name "Docker Desktop" -Value "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All -All -NoRestart
+
 Unregister-ScheduledTask -TaskName "Setup" -Confirm:$false
 
 $Trigger= New-ScheduledTaskTrigger -AtLogOn
